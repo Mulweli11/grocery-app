@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "880319220349",
+    "project_id": "ecome-72c36",
+    "storage_bucket": "ecome-72c36.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:880319220349:android:edb45fbf7f893a173dbf14",
+        "android_client_info": {
+          "package_name": "com.example.ecome"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbgT1m8GH_hNQzLFvzzYPjezzq6tk44UM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
