@@ -1,12 +1,17 @@
-package com.example.addressautocomplete
-
+package com.example.ecome
+import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ecome.HomeActivity
 import kotlinx.coroutines.*
 import org.json.JSONObject
 import java.net.URL
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 import com.example.ecome.R
+
+
 class AddressActivity : AppCompatActivity() {
 
     private lateinit var etPhone: EditText
@@ -17,7 +22,9 @@ class AddressActivity : AppCompatActivity() {
     private lateinit var etCountry: EditText
     private lateinit var btnFindAddress: Button
 
-    private val apiKey = "YOUR_OPENCAGE_API_KEY"
+    // Nominatim is a free public API for open-source geocoding.
+
+    private val NOMINATIM_BASE_URL = "https://nominatim.openstreetmap.org/search?format=json&limit=1&addressdetails=1&q="
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,39 +49,66 @@ class AddressActivity : AppCompatActivity() {
     }
 
     private fun findAddressDetails(address: String) {
+        // Use Dispatchers.IO for network operation
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val url =
-                    "https://api.opencagedata.com/geocode/v1/json?q=${address.replace(" ", "+")}&key=$apiKey"
-                val response = URL(url).readText()
-                val jsonObject = JSONObject(response)
-                val results = jsonObject.getJSONArray("results")
+                // Encode the address for safe URL construction
+                val encodedAddress = URLEncoder.encode(address, StandardCharsets.UTF_8.toString())
+                val url = NOMINATIM_BASE_URL + encodedAddress
 
-                if (results.length() > 0) {
-                    val components = results.getJSONObject(0).getJSONObject("components")
 
-                    val city = components.optString("city", components.optString("town", ""))
-                    val state = components.optString("state", "")
-                    val postcode = components.optString("postcode", "")
-                    val country = components.optString("country", "")
+                val connection = URL(url).openConnection().apply {
+                    setRequestProperty("User-Agent", "YourAppName/1.0") // IMPORTANT: Use a unique name
+                }
+                val response = connection.getInputStream().bufferedReader().use { it.readText() }
 
-                    withContext(Dispatchers.Main) {
-                        etCity.setText(city)
-                        etState.setText(state)
-                        etPostalCode.setText(postcode)
-                        etCountry.setText(country)
+                val jsonArray = org.json.JSONArray(response)
+
+                if (jsonArray.length() > 0) {
+                    val result = jsonArray.getJSONObject(0)
+                    val components = result.optJSONObject("address")
+
+                    if (components != null) {
+
+                        val city = components.optString("city", components.optString("town", components.optString("village", "")))
+                        val state = components.optString("state", "")
+                        // Nominatim uses "postcode" directly
+                        val postcode = components.optString("postcode", "")
+                        val country = components.optString("country", "")
+
+                        withContext(Dispatchers.Main) {
+                            etCity.setText(city)
+                            etState.setText(state)
+                            etPostalCode.setText(postcode)
+                            etCountry.setText(country)
+
+                            // 1. Show Success Toast
+                            Toast.makeText(this@AddressActivity, "Address details filled successfully!", Toast.LENGTH_LONG).show()
+
+                            // 2. Navigate to HomeActivity
+                            val intent = Intent(this@AddressActivity, HomeActivity::class.java)
+                            startActivity(intent)
+                            finish() // Close AddressActivity so the user can't navigate back easily
+                        }
+                    } else {
+                        // Handle case where address details node is missing
+                        handleError("Address components not found in response.")
                     }
                 } else {
-                    withContext(Dispatchers.Main) {
-                        Toast.makeText(this@AddressActivity, "Address not found", Toast.LENGTH_SHORT).show()
-                    }
+                    handleError("Address not found by geocoding service.")
                 }
 
             } catch (e: Exception) {
-                withContext(Dispatchers.Main) {
-                    Toast.makeText(this@AddressActivity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
-                }
+                e.printStackTrace()
+                handleError("Network Error: ${e.message}")
             }
+        }
+    }
+
+    // Utility function to handle errors on the Main thread
+    private suspend fun handleError(message: String) {
+        withContext(Dispatchers.Main) {
+            Toast.makeText(this@AddressActivity, message, Toast.LENGTH_SHORT).show()
         }
     }
 }
