@@ -4,13 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.appcompat.app.AppCompatActivity
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import okhttp3.*
 import org.json.JSONObject
-import java.io.BufferedReader
-import java.io.InputStreamReader
+import java.io.IOException
 
 class WelcomeActivity : AppCompatActivity() {
 
@@ -19,7 +20,7 @@ class WelcomeActivity : AppCompatActivity() {
     private lateinit var btnAlreadyHaveAccount: Button
 
     private val handler = Handler(Looper.getMainLooper())
-    private var imageUrls = listOf<String>()
+    private val imageUrls = mutableListOf<String>()
     private var currentIndex = 0
     private val slideDelay = 4000L // 4 seconds per image
 
@@ -31,66 +32,75 @@ class WelcomeActivity : AppCompatActivity() {
         btnGetStarted = findViewById(R.id.btnGetStarted)
         btnAlreadyHaveAccount = findViewById(R.id.btnAlreadyhaveaccount)
 
-        // Load image URLs from JSON
-        imageUrls = loadImagesFromJson() ?: emptyList()
+        fetchGroceryImages()
 
-        // Start slideshow if images exist
-        if (imageUrls.isNotEmpty()) startImageSlideshow()
-
-        //  Navigate to RegisterActivity
         btnGetStarted.setOnClickListener {
-            val intent = Intent(this, SignupActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, SignupActivity::class.java))
         }
 
-        //  Navigate to LoginActivity
         btnAlreadyHaveAccount.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, LoginActivity::class.java))
         }
     }
 
-    private fun loadImagesFromJson(): List<String>? {
-        return try {
-            val inputStream = assets.open("images.json")
-            val reader = BufferedReader(InputStreamReader(inputStream))
-            val jsonText = reader.readText()
-            reader.close()
+    private fun fetchGroceryImages() {
+        val apiKey = "52380452-a06f228ef26eeeb8f154b1cd5"
+        // Search specifically for fresh produce / grocery photos
+        val url =
+            "https://pixabay.com/api/?key=$apiKey&q=fresh+produce&image_type=photo&per_page=20"
 
-            val jsonObject = JSONObject(jsonText)
-            val jsonArray = jsonObject.getJSONArray("images")
-            val list = mutableListOf<String>()
-            for (i in 0 until jsonArray.length()) {
-                list.add(jsonArray.getString(i))
+        val request = Request.Builder().url(url).get().build()
+        val client = OkHttpClient()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                Log.e("API_ERROR", "Failed: ${e.message}")
             }
-            list
-        } catch (e: Exception) {
-            e.printStackTrace()
-            null
-        }
+
+            override fun onResponse(call: Call, response: Response) {
+                response.use { res ->
+                    if (!res.isSuccessful) {
+                        Log.e("API_ERROR", "Unexpected code $res")
+                        return
+                    }
+
+                    val body = res.body() // OkHttp 5 getter
+                    if (body != null) {
+                        val jsonData = body.string()
+                        try {
+                            val jsonObject = JSONObject(jsonData)
+                            val hitsArray = jsonObject.getJSONArray("hits")
+                            imageUrls.clear()
+                            for (i in 0 until hitsArray.length()) {
+                                val imageUrl =
+                                    hitsArray.getJSONObject(i).getString("largeImageURL")
+                                imageUrls.add(imageUrl)
+                            }
+                            runOnUiThread {
+                                if (imageUrls.isNotEmpty()) startSlideshow()
+                            }
+                        } catch (e: Exception) {
+                            Log.e("JSON_ERROR", "Parse error: ${e.message}")
+                        }
+                    }
+                }
+            }
+        })
     }
 
-    private fun startImageSlideshow() {
+    private fun startSlideshow() {
         handler.post(object : Runnable {
             override fun run() {
-                val imageUrl = imageUrls[currentIndex]
-                backgroundImage.animate()
-                    .alpha(0f)
-                    .setDuration(800)
-                    .withEndAction {
-                        Glide.with(this@WelcomeActivity)
-                            .load(imageUrl)
-                            .centerCrop()
-                            .into(backgroundImage)
+                if (imageUrls.isNotEmpty()) {
+                    val imageUrl = imageUrls[currentIndex]
+                    Glide.with(this@WelcomeActivity)
+                        .load(imageUrl)
+                        .centerCrop()
+                        .into(backgroundImage)
 
-                        backgroundImage.animate()
-                            .alpha(1f)
-                            .setDuration(800)
-                            .start()
-                    }.start()
-
-                currentIndex = (currentIndex + 1) % imageUrls.size
-                handler.postDelayed(this, slideDelay)
+                    currentIndex = (currentIndex + 1) % imageUrls.size
+                    handler.postDelayed(this, slideDelay)
+                }
             }
         })
     }

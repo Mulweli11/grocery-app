@@ -2,6 +2,7 @@ package com.example.ecome
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -14,6 +15,10 @@ import com.google.firebase.ktx.Firebase
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+
+    companion object {
+        private const val TAG = "LOGIN_DEBUG"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         val signupLink = findViewById<TextView>(R.id.SignupLink)
 
-        // Handle login button click
+        // Login button click
         btnLogin.setOnClickListener {
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
@@ -38,26 +43,35 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Firebase sign-in
-            auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, MainActivity::class.java))
-                        finish()
-                    } else {
-                        Toast.makeText(
-                            this,
-                            "Login failed: ${task.exception?.message}",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-                }
+            loginUser(email, password)
         }
 
         // Navigate to signup screen
         signupLink.setOnClickListener {
             startActivity(Intent(this, SignupActivity::class.java))
         }
+    }
+
+    private fun loginUser(email: String, password: String) {
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                Log.d(TAG, "Login task successful: ${task.isSuccessful}")
+                if (task.isSuccessful) {
+                    val user = auth.currentUser
+                    Log.d(TAG, "User ID: ${user?.uid}, Email: ${user?.email}")
+
+                    Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
+                    finish() // Close LoginActivity
+                } else {
+                    Log.e(TAG, "Login failed", task.exception)
+                    Toast.makeText(
+                        this,
+                        "Login failed: ${task.exception?.localizedMessage}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
     }
 }

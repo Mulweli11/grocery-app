@@ -13,14 +13,14 @@
         android:scaleType="centerCrop"
         android:contentDescription="Grocery background" />
 
-    <!-- Semi-transparent overlay -->
+    <!-- Overlay -->
     <View
         android:id="@+id/overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#80000000" />
 
-    <!-- Welcome text & button -->
+    <!-- Buttons and text -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:text="Get your groceries in as fast as one hour"
             android:textColor="@android:color/white"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:layout_marginTop="4dp" />
 
         <Button
@@ -70,7 +70,6 @@
             android:textColor="@color/primary_black"
             android:layout_marginTop="16dp"
             android:padding="12dp" />
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
