@@ -37,6 +37,14 @@
             android:name="com.example.ecome.WelcomeActivity"
             android:exported="true" />
 
+        <activity
+            android:name="com.example.ecome.HomeActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.example.ecome.AddressActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>

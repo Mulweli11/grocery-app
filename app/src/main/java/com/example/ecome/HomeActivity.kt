@@ -25,16 +25,14 @@ class HomeActivity : AppCompatActivity() {
     // Product lists (using the corrected Product structure)
     private val exclusiveProducts = listOf(
         Product(1, "Organic Bananas", 10.00, "7pcs, Priceg", R.drawable.banana),
-        Product(2, "Red Apple", 15.50, "1kg, Priceg", R.drawable.banana),
-        Product(3, "Fresh Grapes", 8.99, "1kg, Priceg", R.drawable.banana),
-        Product(4, "Broccoli Florets", 5.25, "500g, Priceg", R.drawable.banana)
+        Product(2, "Red Apple", 15.50, "1kg, Priceg", R.drawable.redapple),
+        Product(3, "Fresh Grapes", 8.99, "1kg, Priceg", R.drawable.freshgrapes),
+        Product(4, "Broccoli Florets", 5.25, "500g, Priceg", R.drawable.broccoliflorets)
     )
 
     private val bestSellingProducts = listOf(
-        Product(5, "Bell Peppers", 12.00, "4pcs, Priceg", R.drawable.banana),
-        Product(6, "Avocados", 7.50, "2pcs, Priceg", R.drawable.banana),
-        Product(7, "Cherry Tomatoes", 3.99, "250g, Priceg", R.drawable.banana),
-        Product(8, "Sweet Potato", 4.10, "1kg, Priceg", R.drawable.banana)
+        Product(5, "Bell Peppers", 12.00, "4pcs, Priceg", R.drawable.bellpeppers),
+
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

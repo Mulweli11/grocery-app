@@ -24,16 +24,13 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        // Initialize Firebase Auth
         auth = Firebase.auth
 
-        // View bindings
         val etEmail = findViewById<EditText>(R.id.etEmail)
         val etPassword = findViewById<EditText>(R.id.etPassword)
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         val signupLink = findViewById<TextView>(R.id.SignupLink)
 
-        // Login button click
         btnLogin.setOnClickListener {
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
@@ -46,7 +43,6 @@ class LoginActivity : AppCompatActivity() {
             loginUser(email, password)
         }
 
-        // Navigate to signup screen
         signupLink.setOnClickListener {
             startActivity(Intent(this, SignupActivity::class.java))
         }
@@ -57,13 +53,10 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 Log.d(TAG, "Login task successful: ${task.isSuccessful}")
                 if (task.isSuccessful) {
-                    val user = auth.currentUser
-                    Log.d(TAG, "User ID: ${user?.uid}, Email: ${user?.email}")
-
                     Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, HomeActivity::class.java)
-                    startActivity(intent)
-                    finish() // Close LoginActivity
+                    Log.d(TAG, "Navigating to HomeActivity")
+                    startActivity(Intent(this, AddressActivity::class.java))
+                    finish()
                 } else {
                     Log.e(TAG, "Login failed", task.exception)
                     Toast.makeText(
