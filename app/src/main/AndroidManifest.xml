@@ -44,6 +44,19 @@
         <activity
             android:name="com.example.ecome.AddressActivity"
             android:exported="true" />
+        <activity
+            android:name="com.example.ecome.CartActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.example.ecome.AccountActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.example.ecome.CheckoutActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.example.ecome.OrderConfirmationActivity"
+            android:exported="true" />
 
     </application>
 

@@ -46,6 +46,10 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
+    //new
+
+    implementation("me.relex:circleindicator:2.1.6")
+
     // --- Firebase Authentication ---
     implementation("com.google.firebase:firebase-auth:23.1.0")
     implementation("com.google.firebase:firebase-auth-ktx:23.1.0")
@@ -56,7 +60,7 @@ dependencies {
     // --- Retrofit for APIs (optional) ---
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
-
+    implementation("com.google.firebase:firebase-firestore-ktx")
     // --- Glide for image loading ---
     implementation("com.github.bumptech.glide:glide:4.16.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")

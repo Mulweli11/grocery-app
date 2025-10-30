@@ -1,185 +1,254 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="#F8F8F8"
+    android:fillViewport="true">
 
-    <!-- Scrollable Content Area -->
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:fillViewport="true"
-        android:paddingHorizontal="16dp"
-        android:paddingTop="12dp"
-        android:scrollbars="none"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:padding="8dp"
+            android:elevation="2dp">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="120dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ekhaya"
+                android:contentDescription="Logo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <ImageView
+                android:id="@+id/menuIcon"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/menu"
+                android:contentDescription="Menu Icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
 
-            <!-- Location and logo row -->
-            <LinearLayout
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/bannerViewPager"
                 android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:clipToPadding="false"
+                android:clipChildren="false"
+                android:overScrollMode="never" />
+
+            <me.relex.circleindicator.CircleIndicator3
+                android:id="@+id/bannerIndicator"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingBottom="8dp">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="Current delivery location icon"
-                    android:src="@drawable/ic_location" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="Pretoria, Central"
-                    android:textColor="@color/primary_black"
-                    android:textSize="16sp" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_gravity="end"
-                    android:contentDescription="App logo/carrot icon"
-                    android:src="@drawable/ic_carrot" />
-            </LinearLayout>
-
-            <!-- Search bar -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="@drawable/search_bg"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingHorizontal="12dp">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:contentDescription="Search icon"
-                    android:src="@drawable/ic_explore" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:hint="Search Store"
-                    android:importantForAutofill="no"
-                    android:inputType="text"
-                    android:minHeight="48dp"
-                    android:paddingStart="8dp"
-                    android:textColorHint="#888888"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <!-- Banner Image -->
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/rounded_banner"
-                android:clipToOutline="true"
-                android:contentDescription="Promotional banner for fresh vegetables"
-                android:scaleType="centerCrop"
-                android:src="@drawable/banner_vegetables" />
-
-            <!-- Exclusive Offer Section Header -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="8dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Exclusive Offer"
-                    android:textColor="@color/primary_black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="See all"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <!-- Exclusive Offer Recycler View -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerExclusive"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-            <!-- Best Selling Section Header -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="8dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Best Selling"
-                    android:textColor="@color/primary_black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="See all"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <!-- Best Selling Recycler View -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerBestSelling"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-            <!-- Bottom Spacer to prevent content overlap with BottomNav -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="80dp" />
-
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp" />
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
 
-    <!-- Bottom Navigation -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@color/white"
-        android:elevation="8dp"
-        app:menu="@menu/bottom_nav_menu"
-        app:labelVisibilityMode="labeled" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Categories"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_marginTop="24dp" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/categoryRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            android:overScrollMode="never"
+            android:nestedScrollingEnabled="false" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trending Products"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_marginTop="24dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/trendingRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:layout_marginTop="12dp"
+            android:nestedScrollingEnabled="false"
+            android:overScrollMode="never" />
+
+        <TextView
+            android:id="@+id/dairyLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dairy"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_marginTop="24dp"
+            android:visibility="gone"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dairyRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:visibility="gone"
+            android:nestedScrollingEnabled="false"
+            android:overScrollMode="never"/>
+
+        <TextView
+            android:id="@+id/meatLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Meat"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_marginTop="24dp"
+            android:visibility="gone"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/meatRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:visibility="gone"
+            android:nestedScrollingEnabled="false"
+            android:overScrollMode="never"/>
+
+        <TextView
+            android:id="@+id/produceLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Produce"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_marginTop="24dp"
+            android:visibility="gone"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/produceRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:visibility="gone"
+            android:nestedScrollingEnabled="false"
+            android:overScrollMode="never"/>
+
+        <TextView
+            android:id="@+id/beveragesLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Beverages"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_marginTop="24dp"
+            android:visibility="gone"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/beveragesRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:visibility="gone"
+            android:nestedScrollingEnabled="false"
+            android:overScrollMode="never"/>
+
+        <TextView
+            android:id="@+id/bakeryLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bakery"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_marginTop="24dp"
+            android:visibility="gone"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/bakeryRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:visibility="gone"
+            android:nestedScrollingEnabled="false"
+            android:overScrollMode="never"/>
+
+        <TextView
+            android:id="@+id/fruitsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fruits"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_marginTop="24dp"
+            android:visibility="gone"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fruitsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:visibility="gone"
+            android:nestedScrollingEnabled="false"
+            android:overScrollMode="never"/>
+
+        <TextView
+            android:id="@+id/snacksLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Snacks"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_marginTop="24dp"
+            android:visibility="gone"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/snacksRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:visibility="gone"
+            android:nestedScrollingEnabled="false"
+            android:overScrollMode="never"/>
+
+        <TextView
+            android:id="@+id/vegetablesLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vegetables"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_marginTop="24dp"
+            android:visibility="gone"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/vegetablesRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:visibility="gone"
+            android:nestedScrollingEnabled="false"
+            android:overScrollMode="never"/>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
