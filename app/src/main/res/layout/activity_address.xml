@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#A4E3E8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter Your Address"
+            android:textColor="#000"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_marginTop="32dp"/>
+
+        <TextView
+            android:id="@+id/tvSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start typing your address below"
+            android:textColor="#555"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"/>
+
+        <EditText
+            android:id="@+id/etPhone"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Phone number"
+            android:inputType="phone"
+            android:background="@drawable/edittext_rounded_bg"
+            android:padding="16dp"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:layout_marginTop="12dp"/>
+
+        <EditText
+            android:id="@+id/etAddress"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Start typing address"
+            android:background="@drawable/edittext_rounded_bg"
+            android:padding="16dp"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:layout_marginTop="12dp"/>
+
+        <EditText
+            android:id="@+id/etCity"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="City"
+            android:background="@drawable/edittext_rounded_bg"
+            android:padding="16dp"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:layout_marginTop="12dp"/>
+
+        <EditText
+            android:id="@+id/etState"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="State / Province"
+            android:background="@drawable/edittext_rounded_bg"
+            android:padding="16dp"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:layout_marginTop="12dp"/>
+
+        <EditText
+            android:id="@+id/etPostalCode"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Postal Code"
+            android:inputType="number"
+            android:background="@drawable/edittext_rounded_bg"
+            android:padding="16dp"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:layout_marginTop="12dp"/>
+
+        <EditText
+            android:id="@+id/etCountry"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Country"
+            android:background="@drawable/edittext_rounded_bg"
+            android:padding="16dp"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:layout_marginTop="12dp"/>
+
+        <Button
+            android:id="@+id/btnFindAddress"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Find Address"
+            android:backgroundTint="#6D5DFE"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:layout_marginTop="24dp"/>
+
+    </LinearLayout>
+</ScrollView>
