@@ -55,17 +55,13 @@ Layout	Built using ConstraintLayout and RecyclerView for flexible, scalable UI
 Icons	Vector assets from Material Icons
 UX Flow	Smooth transitions between home, explore, cart, favourite, and account screens
 
-📱 Home Screen	Cart Screen	Explore Screen
-
-<img width="155" height="337" alt="2025-11-06 17-45-58 High Res Screenshot" src="https://github.com/user-attachments/assets/2d9c6abe-87e5-4d2c-bd4f-07d28264b0fd" />
-	
-<img width="155" height="337" alt="image" src="https://github.com/user-attachments/assets/bef947c9-be39-43ba-ba9b-083f095085e1" />
-<img width="155" height="332" alt="image" src="https://github.com/user-attachments/assets/f4136a1c-aa5e-49c6-a90d-ed91a95a8100" />
-<img width="151" height="329" alt="image" src="https://github.com/user-attachments/assets/93f98cbf-a843-40dc-8778-1e6baf2ff9a3" />
-<img width="148" height="332" alt="image" src="https://github.com/user-attachments/assets/6aa77124-f8e4-4828-92e2-a23dd873c93f" />
-<img width="112" height="248" alt="image" src="https://github.com/user-attachments/assets/ac066445-0fb6-40ac-ba91-c437702e8d71" />
-<img width="151" height="331" alt="image" src="https://github.com/user-attachments/assets/b0e9e9e5-f8c0-49b2-a3b7-0d34ebd98382" />
-<img width="149" height="332" alt="image" src="https://github.com/user-attachments/assets/1de1ccd5-f57d-4d88-8553-6add956aefd3" />
+📱 App Screens
+🏠 Home Screen	🧭 Explore Screen	🛍️ Cart Screen
+<img src="https://github.com/user-attachments/assets/2d9c6abe-87e5-4d2c-bd4f-07d28264b0fd" width="200"/>	<img src="https://github.com/user-attachments/assets/f4136a1c-aa5e-49c6-a90d-ed91a95a8100" width="200"/>	<img src="https://github.com/user-attachments/assets/bef947c9-be39-43ba-ba9b-083f095085e1" width="200"/>
+👤 Profile Screen	❤️ Favorites	⚙️ Settings
+<img src="https://github.com/user-attachments/assets/93f98cbf-a843-40dc-8778-1e6baf2ff9a3" width="200"/>	<img src="https://github.com/user-attachments/assets/6aa77124-f8e4-4828-92e2-a23dd873c93f" width="200"/>	<img src="https://github.com/user-attachments/assets/ac066445-0fb6-40ac-ba91-c437702e8d71" width="200"/>
+📦 Product Details	💳 Checkout
+<img src="https://github.com/user-attachments/assets/b0e9e9e5-f8c0-49b2-a3b7-0d34ebd98382" width="200"/>	<img src="https://github.com/user-attachments/assets/1de1ccd5-f57d-4d88-8553-6add956aefd3" width="200"/>
 
 	
 🧠 App Architecture
