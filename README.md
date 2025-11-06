@@ -6,12 +6,6 @@
   <i>A modern, responsive grocery shopping app built with Android Studio & Kotlin.</i>
   <br/><br/>
 
-[![Static Badge](https://img.shields.io/badge/License-MIT-red)](LICENSE)
-[![Stars](https://img.shields.io/github/stars/your-username/grocery-app.svg)](https://github.com/your-username/grocery-app/stargazers)
-[![Forks](https://img.shields.io/github/forks/your-username/grocery-app.svg)](https://github.com/your-username/grocery-app/forks)
-[![Contributors](https://img.shields.io/github/contributors/your-username/grocery-app.svg)](https://github.com/your-username/grocery-app/graphs/contributors)
-[![Last Commit](https://img.shields.io/github/last-commit/your-username/grocery-app.svg)](https://github.com/your-username/grocery-app/commits/main)
-[![Issues](https://img.shields.io/github/issues/your-username/grocery-app.svg)](https://github.com/your-username/grocery-app/issues)
 
 </div>
 
