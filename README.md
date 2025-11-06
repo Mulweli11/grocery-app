@@ -1,5 +1,7 @@
 # grocery-app
 🛍️Roots Grocery App
+
+
 📖 Overview
 
 Roots Grocery App is a modern Android application that allows users to browse, search, and purchase grocery items online.
