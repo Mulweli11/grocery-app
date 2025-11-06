@@ -66,12 +66,11 @@ The main objectives of the app are to:
 
 | 👤 **cart** | ❤️ **account** | ⚙️ **Settings** |
 |:--------------------:|:----------------:|:---------------:|
-| <img width="200"  alt="2025-11-06 18-21-14 High Res Screenshot" src="https://github.com/user-attachments/assets/c1d2d96f-d1d2-4008-9195-a3339768bef7" />| <img width="200"  alt="2025-11-06 18-21-26 High Res Screenshot" src="https://github.com/user-attachments/assets/c5a34640-89c0-49d3-bd62-0861b0abcd1d" />|<img width="200"  alt="2025-11-06 18-27-55 High Res Screenshot" src="https://github.com/user-attachments/assets/a50fcdf2-b591-447f-8344-a12a30849698" />|
+| <img width="200"  alt="2025-11-06 18-21-14 High Res Screenshot" src="https://github.com/user-attachments/assets/c1d2d96f-d1d2-4008-9195-a3339768bef7" />| <img width="200"  alt="2025-11-06 18-21-26 High Res Screenshot" src="https://github.com/user-attachments/assets/c5a34640-89c0-49d3-bd62-0861b0abcd1d" />|<img width="200"  alt="2025-11-06 18-21-43 High Res Screenshot" src="https://github.com/user-attachments/assets/09b04bd7-274b-49b7-b13c-bb2ec6d8a630" />|
 
 | 💳 **Checkout** | 💳 **Checkout** | 💳 **Checkout** |
-|:----------------------:|
-| <img src=<img width="200" alt="2025-11-06 18-27-24 High Res Screenshot" src="https://github.com/user-attachments/assets/f73ba9d9-0bca-4762-967e-4935a2498d5f" />||<img width="1080" height="2400" alt="2025-11-06 18-27-49 High Res Screenshot" src="https://github.com/user-attachments/assets/290d8ef5-8f61-4e36-9668-8e3b6cb7e85d" />
-|| <img src="https://github.com/user-attachments/assets/b0e9e9e5-f8c0-49b2-a3b7-0d34ebd98382" width="200"/> |
+|:----------------------:|:----------------------:|:----------------------:|
+|<img width="200"  alt="2025-11-06 18-27-49 High Res Screenshot" src="https://github.com/user-attachments/assets/290d8ef5-8f61-4e36-9668-8e3b6cb7e85d" />|| <img width="200"  alt="2025-11-06 18-27-55 High Res Screenshot" src="https://github.com/user-attachments/assets/f655bb48-f7a2-419b-b616-6d76d3d463f9" />|
 
 ---
 
