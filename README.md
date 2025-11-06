@@ -64,8 +64,8 @@ The main objectives of the app are to:
 |:--------------------:|:----------------:|:---------------:|
 | <img src="https://github.com/user-attachments/assets/93f98cbf-a843-40dc-8778-1e6baf2ff9a3" width="200"/> | <img src="https://github.com/user-attachments/assets/6aa77124-f8e4-4828-92e2-a23dd873c93f" width="200"/> | <img src="https://github.com/user-attachments/assets/ac066445-0fb6-40ac-ba91-c437702e8d71" width="200"/> |
 
-| 📦 **Product Details** | 💳 **Checkout** |
-|:----------------------:|:---------------:|
+| 📦 **Product Details** | 💳 **Checkout** | 💳 **Checkout** |
+|:----------------------:|:---------------:|:---------------:|
 | <img src="https://github.com/user-attachments/assets/b0e9e9e5-f8c0-49b2-a3b7-0d34ebd98382" width="200"/> | <img src="https://github.com/user-attachments/assets/1de1ccd5-f57d-4d88-8553-6add956aefd3" width="200"/> |
 
 ---
