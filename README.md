@@ -1,97 +1,94 @@
-# grocery-app
-🛍️Roots Grocery App
+<div align="right">
 
+<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/your-username/grocery-app" style="text-decoration:none">
+  <img src="https://img.shields.io/badge/-0d1117?logo=facebook"  width="40" height="30">
+</a>
+<a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https://github.com/your-username/grocery-app" style="text-decoration:none">
+  <img src="https://img.shields.io/badge/-0d1117?logo=linkedin"  width="40" height="30">
+</a>
+<a target="_blank" href="https://twitter.com/intent/tweet?&url=https://github.com/your-username/grocery-app" style="text-decoration:none">
+  <img src="https://img.shields.io/badge/-0d1117?logo=twitter" width="40" height="30">
+</a>
 
-📖 Overview
+</div>
 
-Roots Grocery App is a modern Android application that allows users to browse, search, and purchase grocery items online.
-The app focuses on clean UI, smooth shopping experience, and fast performance — making it easier for users to get fresh groceries delivered right to their doorstep.
+<div align="center">
 
-🎯 Purpose of the App
+  <h2>🛍️ Roots Grocery App</h2>
+  <i>A modern, responsive grocery shopping app built with Android Studio & Kotlin.</i>
+  <br/><br/>
 
-The main purpose of the app is to:
+[![Static Badge](https://img.shields.io/badge/License-MIT-red)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/your-username/grocery-app.svg)](https://github.com/your-username/grocery-app/stargazers)
+[![Forks](https://img.shields.io/github/forks/your-username/grocery-app.svg)](https://github.com/your-username/grocery-app/forks)
+[![Contributors](https://img.shields.io/github/contributors/your-username/grocery-app.svg)](https://github.com/your-username/grocery-app/graphs/contributors)
+[![Last Commit](https://img.shields.io/github/last-commit/your-username/grocery-app.svg)](https://github.com/your-username/grocery-app/commits/main)
+[![Issues](https://img.shields.io/github/issues/your-username/grocery-app.svg)](https://github.com/your-username/grocery-app/issues)
 
-Help users find and order groceries quickly from local stores.
+</div>
 
-Provide a convenient and contactless shopping experience.
+---
 
-Allow users to add items to their cart, view exclusive offers, and explore top-selling products.
+## 📖 Overview
 
-Serve as a foundation for future e-commerce systems, including payment integration and order tracking.
+**Roots Grocery App** is a sleek Android application that enables users to browse, search, and purchase grocery items online.  
+The app focuses on a **clean UI**, **smooth shopping experience**, and **fast performance**, making grocery shopping effortless and enjoyable.
 
-🧩 Core Features
+---
 
-✅ Modern & Responsive UI
+## 🎯 Purpose of the App
 
+The main objectives of the app are to:
 
-✅ User authentication (Firebase-ready)
+- 🛒 Help users find and order groceries quickly from local stores.  
+- 🚚 Provide a convenient, contactless shopping experience.  
+- 💸 Allow users to add items to their cart, view exclusive offers, and explore top-selling products.  
+- ⚙️ Serve as a foundation for scalable e-commerce systems (with payment & order tracking).
 
+---
 
-✅ Browse groceries by categories
+## 🧩 Core Features
 
+✅ Modern & Responsive UI  
+✅ Firebase-ready authentication  
+✅ Browse groceries by categories  
+✅ Add / Remove items from cart  
+✅ Track orders in real-time  
+✅ Exclusive offers and best-selling sections  
+✅ Persistent cart management (using Kotlin objects)  
+✅ Bottom navigation for easy access  
 
-✅ Add / Remove items from cart
+---
 
+## 🎨 Design Considerations
 
-✅ Track orders
+| **Design Element** | **Description** |
+|:-------------------|:----------------|
+| 🎨 **Color Palette** | Green (#2E7D32) for trust & freshness, White for clarity |
+| ✍️ **Typography** | Poppins (Bold & Medium) for modern readability |
+| 🧱 **Layout** | Built using ConstraintLayout and RecyclerView |
+| 🔣 **Icons** | Vector assets from Material Icons |
+| 🧭 **UX Flow** | Smooth transitions between Home, Explore, Cart, Favorite, and Account screens |
 
+---
 
-✅ Exclusive offers and best-selling sections
+## 📱 App Screens
 
+| 🏠 **Home Screen** | 🧭 **Explore Screen** | 🛍️ **Cart Screen** |
+|:------------------:|:--------------------:|:-----------------:|
+| <img src="https://github.com/user-attachments/assets/2d9c6abe-87e5-4d2c-bd4f-07d28264b0fd" width="200"/> | <img src="https://github.com/user-attachments/assets/f4136a1c-aa5e-49c6-a90d-ed91a95a8100" width="200"/> | <img src="https://github.com/user-attachments/assets/bef947c9-be39-43ba-ba9b-083f095085e1" width="200"/> |
 
-✅ Persistent cart management with Kotlin object classes
+| 👤 **Profile Screen** | ❤️ **Favorites** | ⚙️ **Settings** |
+|:--------------------:|:----------------:|:---------------:|
+| <img src="https://github.com/user-attachments/assets/93f98cbf-a843-40dc-8778-1e6baf2ff9a3" width="200"/> | <img src="https://github.com/user-attachments/assets/6aa77124-f8e4-4828-92e2-a23dd873c93f" width="200"/> | <img src="https://github.com/user-attachments/assets/ac066445-0fb6-40ac-ba91-c437702e8d71" width="200"/> |
 
+| 📦 **Product Details** | 💳 **Checkout** |
+|:----------------------:|:---------------:|
+| <img src="https://github.com/user-attachments/assets/b0e9e9e5-f8c0-49b2-a3b7-0d34ebd98382" width="200"/> | <img src="https://github.com/user-attachments/assets/1de1ccd5-f57d-4d88-8553-6add956aefd3" width="200"/> |
 
-✅ Bottom navigation for easy navigation
+---
 
-🎨 Design Considerations
+## 🧠 App Architecture
 
-The app’s design emphasizes simplicity, speed, and accessibility.
+The project follows **MVVM (Model–View–ViewModel)** architecture with clean modular organization.
 
-Design Element	Description
-Color Palette	Green (#2E7D32) for trust & freshness, White for clarity
-Typography	Poppins font family (Bold & Medium) for modern readability
-Layout	Built using ConstraintLayout and RecyclerView for flexible, scalable UI
-Icons	Vector assets from Material Icons
-UX Flow	Smooth transitions between home, explore, cart, favourite, and account screens
-
-📱 App Screens
-🏠 Home Screen	🧭 Explore Screen	🛍️ Cart Screen
-<img src="https://github.com/user-attachments/assets/2d9c6abe-87e5-4d2c-bd4f-07d28264b0fd" width="200"/>	<img src="https://github.com/user-attachments/assets/f4136a1c-aa5e-49c6-a90d-ed91a95a8100" width="200"/>	<img src="https://github.com/user-attachments/assets/bef947c9-be39-43ba-ba9b-083f095085e1" width="200"/>
-👤 Profile Screen	❤️ Favorites	⚙️ Settings
-<img src="https://github.com/user-attachments/assets/93f98cbf-a843-40dc-8778-1e6baf2ff9a3" width="200"/>	<img src="https://github.com/user-attachments/assets/6aa77124-f8e4-4828-92e2-a23dd873c93f" width="200"/>	<img src="https://github.com/user-attachments/assets/ac066445-0fb6-40ac-ba91-c437702e8d71" width="200"/>
-📦 Product Details	💳 Checkout
-<img src="https://github.com/user-attachments/assets/b0e9e9e5-f8c0-49b2-a3b7-0d34ebd98382" width="200"/>	<img src="https://github.com/user-attachments/assets/1de1ccd5-f57d-4d88-8553-6add956aefd3" width="200"/>
-
-	
-🧠 App Architecture
-
-The project follows MVVM (Model-View-ViewModel) and clean architecture principles:
-
-com.example.groceryapp
-│
-├── data/               # CartManager, Repository
-├── model/              # Data classes (Product, User)
-├── ui/                 # Activities and Fragments
-├── adapter/            # RecyclerView adapters
-└── utils/              # Helper classes and constants
-
-🔍 Key Components
-
-RecyclerView for displaying product lists
-
-Kotlin data classes for product management
-
-Singleton CartManager for centralized cart handling
-
-BottomNavigationView for intuitive navigation
-
-🧰 Tech Stack
-Category	Technology
-Language	Kotlin
-Architecture	MVVM
-UI Framework	AndroidX, Material Design
-Database (future)	Firebase Firestore / Room
-Version Control	Git + GitHub
-CI/CD	GitHub Actions
-Design Tools	Figma / Android Studio Preview
