@@ -56,7 +56,7 @@ The main objectives of the app are to:
 
 ## 📱 App Screens
 
-| 🏠 **Home Screen** | 🧭 **Explore Screen** | 🛍️ **Cart Screen** |
+| 🏠 **icon** | 🏠 **Home Screen** | 🛍️ **Cart Screen** |
 |:------------------:|:--------------------:|:-----------------:|
 | <img src="https://github.com/user-attachments/assets/2d9c6abe-87e5-4d2c-bd4f-07d28264b0fd" width="200"/> | <img src="https://github.com/user-attachments/assets/f4136a1c-aa5e-49c6-a90d-ed91a95a8100" width="200"/> | <img src="https://github.com/user-attachments/assets/bef947c9-be39-43ba-ba9b-083f095085e1" width="200"/> |
 
