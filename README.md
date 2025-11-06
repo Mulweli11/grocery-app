@@ -56,9 +56,13 @@ The main objectives of the app are to:
 
 ## 📱 App Screens
 
-| 🏠 **icon** | 🏠 **Home Screen** | 🛍️ **Cart Screen** |
+| 🔣 **icon** | 🏠 **Screen** | 🛍️ **welcome Screen** |
 |:------------------:|:--------------------:|:-----------------:|
 | <img src="https://github.com/user-attachments/assets/2d9c6abe-87e5-4d2c-bd4f-07d28264b0fd" width="200"/> | <img src="https://github.com/user-attachments/assets/f4136a1c-aa5e-49c6-a90d-ed91a95a8100" width="200"/> | <img src="https://github.com/user-attachments/assets/bef947c9-be39-43ba-ba9b-083f095085e1" width="200"/> |
+
+| 👤 **log in** | ❤️ **register** | ⚙️ **Settings** |
+|:--------------------:|:----------------:|:---------------:|
+| <img src="https://github.com/user-attachments/assets/93f98cbf-a843-40dc-8778-1e6baf2ff9a3" width="200"/> | <img src="https://github.com/user-attachments/assets/6aa77124-f8e4-4828-92e2-a23dd873c93f" width="200"/> | <img src="https://github.com/user-attachments/assets/ac066445-0fb6-40ac-ba91-c437702e8d71" width="200"/> |
 
 | 👤 **Profile Screen** | ❤️ **Favorites** | ⚙️ **Settings** |
 |:--------------------:|:----------------:|:---------------:|
