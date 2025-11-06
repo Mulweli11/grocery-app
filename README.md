@@ -58,7 +58,8 @@ The main objectives of the app are to:
 
 | 🔣 **icon** | 🏠 **Screen** | 🛍️ **welcome Screen** |
 |:------------------:|:--------------------:|:-----------------:|
-| <img src="https://github.com/user-attachments/assets/2d9c6abe-87e5-4d2c-bd4f-07d28264b0fd" width="200"/> | <img src="https://github.com/user-attachments/assets/f4136a1c-aa5e-49c6-a90d-ed91a95a8100" width="200"/> | <img src="https://github.com/user-attachments/assets/bef947c9-be39-43ba-ba9b-083f095085e1" width="200"/> |
+| <img src="https://github.com/user-attachments/assets/2d9c6abe-87e5-4d2c-bd4f-07d28264b0fd" width="200"/> | <img src="https://github.com/user-attachments/assets/f4136a1c-aa5e-49c6-a90d-ed91a95a8100" width="200"/> | <img width="200" alt="2025-11-06 18-08-35 High Res Screenshot" src="https://github.com/user-attachments/assets/db55ba4c-577d-4ed2-a0b8-ffdc70c0410b" />
+ |
 
 | 👤 **log in** | ❤️ **register** | ⚙️ **home screen** |
 |:--------------------:|:----------------:|:---------------:|
