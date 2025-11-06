@@ -22,12 +22,26 @@ Serve as a foundation for future e-commerce systems, including payment integrati
 🧩 Core Features
 
 ✅ Modern & Responsive UI
+
+
 ✅ User authentication (Firebase-ready)
+
+
 ✅ Browse groceries by categories
+
+
 ✅ Add / Remove items from cart
+
+
 ✅ Track orders
+
+
 ✅ Exclusive offers and best-selling sections
+
+
 ✅ Persistent cart management with Kotlin object classes
+
+
 ✅ Bottom navigation for easy navigation
 
 🎨 Design Considerations
