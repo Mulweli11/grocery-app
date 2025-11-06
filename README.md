@@ -66,10 +66,7 @@ The main objectives of the app are to:
 
 | 👤 **cart** | ❤️ **account** | ⚙️ **Settings** |
 |:--------------------:|:----------------:|:---------------:|
-| <img width="200"  alt="2025-11-06 18-21-14 High Res Screenshot" src="https://github.com/user-attachments/assets/c1d2d96f-d1d2-4008-9195-a3339768bef7" />
-| <img width="200"  alt="2025-11-06 18-21-26 High Res Screenshot" src="https://github.com/user-attachments/assets/c5a34640-89c0-49d3-bd62-0861b0abcd1d" />
- | <img width="200"  alt="2025-11-06 18-21-43 High Res Screenshot" src="https://github.com/user-attachments/assets/fca4d2c0-b331-4c93-8332-5c0f52792dbe" />
- |
+| <img width="200"  alt="2025-11-06 18-21-14 High Res Screenshot" src="https://github.com/user-attachments/assets/c1d2d96f-d1d2-4008-9195-a3339768bef7" />| <img width="200"  alt="2025-11-06 18-21-26 High Res Screenshot" src="https://github.com/user-attachments/assets/c5a34640-89c0-49d3-bd62-0861b0abcd1d" />| <img width="200"  alt="2025-11-06 18-21-43 High Res Screenshot" src="https://github.com/user-attachments/assets/fca4d2c0-b331-4c93-8332-5c0f52792dbe" />|
 
 | 💳 **Checkout** |
 |:----------------------:|
