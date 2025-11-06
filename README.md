@@ -57,7 +57,7 @@ UX Flow	Smooth transitions between home, explore, cart, favourite, and account s
 
 📱 Home Screen	Cart Screen	Explore Screen
 
-<img width="1080" height="2400" alt="2025-11-06 17-45-58 High Res Screenshot" src="https://github.com/user-attachments/assets/2d9c6abe-87e5-4d2c-bd4f-07d28264b0fd" />
+<img width="155" height="337" alt="2025-11-06 17-45-58 High Res Screenshot" src="https://github.com/user-attachments/assets/2d9c6abe-87e5-4d2c-bd4f-07d28264b0fd" />
 	
 <img width="155" height="337" alt="image" src="https://github.com/user-attachments/assets/bef947c9-be39-43ba-ba9b-083f095085e1" />
 <img width="155" height="332" alt="image" src="https://github.com/user-attachments/assets/f4136a1c-aa5e-49c6-a90d-ed91a95a8100" />
