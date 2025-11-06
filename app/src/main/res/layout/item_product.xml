@@ -33,7 +33,7 @@
             android:id="@+id/favoriteButton"
             android:layout_width="30dp" android:layout_height="30dp"
             android:layout_marginTop="8dp" android:layout_marginEnd="8dp"
-            android:background="@drawable/circle_white_background"
+
             android:src="@drawable/ic_heart_outline"
             android:padding="6dp"
             android:elevation="4dp"
@@ -140,13 +140,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add to Cart"
-                android:textSize="12sp" android:textColor="@android:color/black" />
+                android:textSize="12sp"  />
 
             <ImageView
                 android:layout_width="15dp" android:layout_height="18dp"
                 android:src="@drawable/ic_cart"
                 android:layout_marginStart="2dp"
-                app:tint="@android:color/black"
+
                 android:contentDescription="Cart Icon" />
         </LinearLayout>
 

@@ -1,5 +1,6 @@
 package com.example.ecome
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -30,7 +31,9 @@ class LoginActivity : AppCompatActivity() {
         val etPassword = findViewById<EditText>(R.id.etPassword)
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         val signupLink = findViewById<TextView>(R.id.SignupLink)
+        val tvForgotPassword = findViewById<TextView>(R.id.tvForgotPassword)
 
+        // Login Button Click
         btnLogin.setOnClickListener {
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
@@ -43,8 +46,14 @@ class LoginActivity : AppCompatActivity() {
             loginUser(email, password)
         }
 
+        // Signup Redirect
         signupLink.setOnClickListener {
             startActivity(Intent(this, SignupActivity::class.java))
+        }
+
+        // Forgot Password
+        tvForgotPassword.setOnClickListener {
+            showForgotPasswordDialog()
         }
     }
 
@@ -54,7 +63,6 @@ class LoginActivity : AppCompatActivity() {
                 Log.d(TAG, "Login task successful: ${task.isSuccessful}")
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
-                    Log.d(TAG, "Navigating to HomeActivity")
                     startActivity(Intent(this, AddressActivity::class.java))
                     finish()
                 } else {
@@ -66,5 +74,41 @@ class LoginActivity : AppCompatActivity() {
                     ).show()
                 }
             }
+    }
+
+    private fun showForgotPasswordDialog() {
+        val emailEditText = EditText(this)
+        emailEditText.hint = "Enter your registered email"
+
+        AlertDialog.Builder(this)
+            .setTitle("Reset Password")
+            .setMessage("Enter your email to receive password reset instructions")
+            .setView(emailEditText)
+            .setPositiveButton("Send") { dialog, _ ->
+                val email = emailEditText.text.toString().trim()
+                if (email.isEmpty()) {
+                    Toast.makeText(this, "Please enter your email", Toast.LENGTH_SHORT).show()
+                } else {
+                    auth.sendPasswordResetEmail(email)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                Toast.makeText(
+                                    this,
+                                    "Password reset email sent. Check your inbox.",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            } else {
+                                Toast.makeText(
+                                    this,
+                                    "Error: ${task.exception?.localizedMessage}",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+                        }
+                }
+                dialog.dismiss()
+            }
+            .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }
+            .show()
     }
 }

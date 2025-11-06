@@ -23,7 +23,7 @@
                 android:id="@+id/logo"
                 android:layout_width="120dp"
                 android:layout_height="36dp"
-                android:src="@drawable/ekhaya"
+                android:src="@drawable/roots_2"
                 android:contentDescription="Logo"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

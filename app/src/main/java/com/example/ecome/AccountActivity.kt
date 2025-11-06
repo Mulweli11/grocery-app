@@ -1,5 +1,4 @@
 // File: com.example.ecome/AccountActivity.kt
-
 package com.example.ecome
 
 import android.content.Intent
@@ -8,7 +7,8 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.ecome.utils.AccountManager // Assumes you created the AccountManager file
+import com.example.ecome.utils.AccountManager
+import com.example.ecome.utils.TranslationManager
 
 class AccountActivity : AppCompatActivity() {
 
@@ -22,18 +22,26 @@ class AccountActivity : AppCompatActivity() {
         currentUserIdentifierText = findViewById(R.id.currentUserIdentifierText)
         signOutButton = findViewById(R.id.signOutButton)
 
+        // Optionally, set language here
+        // TranslationManager.setLanguage(TranslationManager.Language.ZULU)
+
         displayUserInfo()
         setupSignOutButton()
     }
 
     private fun displayUserInfo() {
+        // Update UI text dynamically based on selected language
+        findViewById<TextView>(R.id.titleText).text = TranslationManager.getTranslation("title_account")
+        findViewById<TextView>(R.id.nameLabel).text = TranslationManager.getTranslation("signed_in_as")
+        signOutButton.text = TranslationManager.getTranslation("sign_out")
+
         val identifier = AccountManager.getUserIdentifier()
         currentUserIdentifierText.text = identifier
 
-        // Hide the sign out button if the user is not actually logged in (e.g., Guest User)
+        // Hide sign-out if not logged in
         if (!AccountManager.isUserLoggedIn()) {
             signOutButton.visibility = android.view.View.GONE
-            Toast.makeText(this, "You are viewing this as a guest.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, TranslationManager.getTranslation("guest_message"), Toast.LENGTH_LONG).show()
         }
     }
 
@@ -41,16 +49,16 @@ class AccountActivity : AppCompatActivity() {
         signOutButton.setOnClickListener {
             if (AccountManager.isUserLoggedIn()) {
                 AccountManager.signOut()
-                Toast.makeText(this, "Successfully signed out.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, TranslationManager.getTranslation("signed_out"), Toast.LENGTH_SHORT).show()
 
-                // IMPORTANT: Navigate the user back to the login or home screen
-                val intent = Intent(this, HomeActivity::class.java) // Assuming HomeActivity is your main hub
+                // Navigate to HomeActivity after sign-out
+                val intent = Intent(this, HomeActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
                 finish()
             } else {
-                Toast.makeText(this, "You are already signed out.", Toast.LENGTH_SHORT).show()
-                finish() // Close the account screen
+                Toast.makeText(this, TranslationManager.getTranslation("already_signed_out"), Toast.LENGTH_SHORT).show()
+                finish()
             }
         }
     }

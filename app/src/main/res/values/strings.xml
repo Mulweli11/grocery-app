@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ecome</string>
+    <string name="welcome_title">Welcome to our store</string>
+    <string name="welcome_subtitle">Get your groceries in as fast as one hour</string>
+    <string name="btn_get_started">Get Started</string>
+    <string name="btn_have_account">Already have an account</string>
 </resources>

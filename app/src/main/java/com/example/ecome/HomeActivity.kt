@@ -1,3 +1,4 @@
+// File: com.example.ecome/HomeActivity.kt
 package com.example.ecome
 
 import android.content.Intent
@@ -6,40 +7,43 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import android.widget.ImageView
 import android.widget.PopupMenu
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.ecome.adapters.BannerAdapter
-import com.example.ecome.adapters.CategoryAdapter // NEW: Import CategoryAdapter
+import com.example.ecome.adapters.CategoryAdapter
 import com.example.ecome.fragments.ProductListFragment
-import com.example.ecome.models.Category // NEW: Import Category Model
+import com.example.ecome.models.Category
 import com.example.ecome.models.Product
 import com.example.ecome.utils.CartManager
+import com.example.ecome.utils.TranslationManager
 import com.google.firebase.firestore.FirebaseFirestore
 import me.relex.circleindicator.CircleIndicator3
 
 class HomeActivity : AppCompatActivity() {
 
-    // --- View Properties ---
+    // Views
     private lateinit var bannerViewPager: ViewPager2
     private lateinit var bannerIndicator: CircleIndicator3
-    private lateinit var categoryRecyclerView: RecyclerView // NEW: Category RecyclerView
+    private lateinit var categoryRecyclerView: RecyclerView
     private lateinit var handler: Handler
 
-    // --- Data Properties ---
+    // Banner
     private var bannerPosition = 0
+
+    // Firestore
     private val db = FirebaseFirestore.getInstance()
 
-    // Sample category data (Ensure these drawable resources exist!)
+    // Sample categories
     private val sampleCategories = listOf(
         Category("Fruits", R.drawable.ic_fruits),
         Category("Vegetables", R.drawable.ic_vegetables),
-        Category("Breads & Sweets", R.drawable.ic_bakery), // Changed name to match image
+        Category("Breads & Sweets", R.drawable.ic_bakery),
         Category("Beverages", R.drawable.ic_beverages),
         Category("Meat", R.drawable.ic_meat),
         Category("Dairy", R.drawable.dairy1)
@@ -57,7 +61,6 @@ class HomeActivity : AppCompatActivity() {
     )
 
     // --- Lambdas ---
-
     private val onAddToCart: (Product) -> Unit = { product ->
         CartManager.addToCart(product)
         val currentItem = CartManager.cartItems.find { it.product.id == product.id }
@@ -65,74 +68,85 @@ class HomeActivity : AppCompatActivity() {
         if (currentItem != null) {
             Toast.makeText(
                 this,
-                "Added 1x ${product.name}. Total in cart: ${currentItem.quantity}",
+                "${TranslationManager.getTranslation("added")} 1x ${product.name}. " +
+                        "${TranslationManager.getTranslation("total_in_cart")}: ${currentItem.quantity}",
                 Toast.LENGTH_SHORT
             ).show()
         } else {
-            Toast.makeText(this, "Failed to add ${product.name} to cart!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                this,
+                "${TranslationManager.getTranslation("failed_add")} ${product.name}",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
     private val onCategoryClick: (Category) -> Unit = { category ->
-        // This is the click handler for the new category cards
-        Toast.makeText(this, "Filtering by category: ${category.name}", Toast.LENGTH_SHORT).show()
-        // TODO: Implement actual product filtering or navigation to a dedicated Category page
+        Toast.makeText(
+            this,
+            "${TranslationManager.getTranslation("filtering_by")}: ${category.name}",
+            Toast.LENGTH_SHORT
+        ).show()
+        // TODO: Filter products by category
     }
 
     // --- Lifecycle ---
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        // Initialize Shared Views
         bannerViewPager = findViewById(R.id.bannerViewPager)
         bannerIndicator = findViewById(R.id.bannerIndicator)
-        categoryRecyclerView = findViewById(R.id.categoryRecyclerView) // NEW: Initialization
+        categoryRecyclerView = findViewById(R.id.categoryRecyclerView)
         handler = Handler(Looper.getMainLooper())
 
         setupBannerSlider()
         setupMenuIcon()
-        setupCategoryList() // NEW: Set up the horizontal category cards
+        setupCategoryList()
 
         // Load content
         loadProductsByCategory("Trending", R.id.trendingRecyclerView, null)
-
         categoryViews.forEach { (categoryName, ids) ->
             loadProductsByCategory(categoryName, ids.first, ids.second)
         }
     }
 
-    // --- Setup Functions ---
+    override fun onResume() {
+        super.onResume()
+        // Refresh UI text based on selected language
+        setupCategoryList()
+        setupMenuIcon()
+    }
 
+    // --- Setup Functions ---
     private fun setupCategoryList() {
-        // Horizontal layout for the categories
         categoryRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         val adapter = CategoryAdapter(sampleCategories, onCategoryClick)
         categoryRecyclerView.adapter = adapter
+
+        // Update category labels dynamically
+        categoryViews.forEach { (categoryName, ids) ->
+            val label = findViewById<TextView>(ids.second)
+            label.text = TranslationManager.getTranslation(categoryName.toLowerCase())
+        }
     }
 
     private fun setupMenuIcon() {
         val menuIcon = findViewById<ImageView>(R.id.menuIcon)
-
         menuIcon.setOnClickListener { view ->
             val popup = PopupMenu(this, view)
             popup.menuInflater.inflate(R.menu.main_menu, popup.menu)
 
+            // Dynamically update menu item titles
+            popup.menu.findItem(R.id.action_cart).title = TranslationManager.getTranslation("cart")
+            popup.menu.findItem(R.id.action_account).title = TranslationManager.getTranslation("account")
+            popup.menu.findItem(R.id.action_settings).title = TranslationManager.getTranslation("settings")
+
             popup.setOnMenuItemClickListener { menuItem ->
                 when (menuItem.itemId) {
-                    R.id.action_cart -> {
-                        // Navigation to CartActivity
-                        val intent = Intent(this, CartActivity::class.java)
-                        startActivity(intent)
-                        true
-                    }
-                    R.id.action_account -> {
-                        // Navigation to AccountActivity
-                        val intent = Intent(this, AccountActivity::class.java)
-                        startActivity(intent)
-                        true
-                    }
+                    R.id.action_cart -> startActivity(Intent(this, CartActivity::class.java)).let { true }
+                    R.id.action_account -> startActivity(Intent(this, AccountActivity::class.java)).let { true }
+                    R.id.action_settings -> startActivity(Intent(this, SettingsActivity::class.java)).let { true }
                     else -> false
                 }
             }
@@ -151,13 +165,9 @@ class HomeActivity : AppCompatActivity() {
 
                 if (products.isNotEmpty()) {
                     val recyclerView = findViewById<RecyclerView>(recyclerViewId)
-
                     labelId?.let { findViewById<TextView>(it).visibility = View.VISIBLE }
                     recyclerView.visibility = View.VISIBLE
-
                     recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-
-                    // Note: Assuming ProductListFragment is an adapter wrapper
                     recyclerView.adapter = ProductListFragment(products, onAddToCart).adapter
                 } else {
                     labelId?.let { findViewById<TextView>(it).visibility = View.GONE }
